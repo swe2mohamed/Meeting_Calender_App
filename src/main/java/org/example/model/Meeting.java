@@ -54,4 +54,13 @@ public class Meeting {
     public Calendar getCalendar() {
         return calendar;
     }
+
+    private void timeValidation(){
+        if(this.endTime.isBefore(this.startTime)){
+            throw new IllegalArgumentException("End time must be after the start time");
+        }
+        if (this.startTime.isBefore(LocalDateTime.now())){
+            throw new IllegalArgumentException("Start time must be in the future.");
+        }
+    }
 }
